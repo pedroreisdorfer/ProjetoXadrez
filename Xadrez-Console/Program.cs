@@ -1,17 +1,17 @@
 ﻿using System;
-using Tabuleiro;
+using Tabuleiro_xadrez;
 
-namespace Xadrez_Console
+namespace xadrez_Console
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Posicao P;
+            Tabuleiro tab = new Tabuleiro(8, 8);
 
-            P = new Posicao(3, 4);
+            Console.ReadLine();
 
-            Console.WriteLine("Posição: " + P);
+            //Tabuleiro tab = new Tabuleiro(8, 8);
         }
     }
 }
