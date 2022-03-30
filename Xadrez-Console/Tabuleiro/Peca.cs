@@ -1,6 +1,6 @@
 ﻿namespace Tabuleiro_xadrez
 {
-    class Peca
+    abstract class Peca // já que tem método abstrato, a classe passa a ser um método abstrato //
     {
         public Posicao posicao { get; set; }
         public Cor cor { get; protected set; }
@@ -21,5 +21,10 @@
         {
             qteMovimentos++;
         }
+
+        public abstract bool[,] movimentosPossiveis(); // matriz boleana, pq para onde a peça movimentar será True e False para as outras opções.
+                                                       // O método precisa ser abstrato, pois ele vai ser chamado em cada classe de peça específica para que
+                                                       // haja o movimento. A regra de movimentos é prevista para cada peça específica //
+
     }
 }
