@@ -9,9 +9,7 @@
         public Posicao(int linha, int coluna)
         {
             this.linha = linha; // this é a referência do objeto acima chamado linha e outro chamado coluna //
-            this.coluna = coluna;
-
-            
+            this.coluna = coluna;           
         }
 
         public override string ToString()
