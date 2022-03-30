@@ -41,6 +41,18 @@
             p.posicao = pos;    
         }
 
+        // método para retirar peça. Já que a mesmo pode ser retornada, não pode ser void //
+        public Peca retirarPeca(Posicao pos)
+        {
+            if(peca(pos) == null) //uma peça na posição pos sendo nula, significa que não tem nenhuma peça, logo, nada para ser retirado //
+            {
+                return null;
+            }
+            Peca aux = peca(pos); // recebe a peça que está na posição informada. Agora a variável aux é a peça em determinada posição //
+            aux.posicao = null; // peça foi retirada da sua posição. Neste caso, a peça estava numa posição que agora passa a ser nula, ou seja, sem nada nela //
+            pecas[pos.linha, pos.coluna] = null; // a posição na matriz passa a ser nula //
+            return aux; // retorna como peça retirada //
+        }
         public bool posicaoValida(Posicao pos) // testando se a posição é valida, pois já que são 8 linhas e 8 colunas, as posições vão de 0 a 7.
         {
             if(pos.linha < 0 || pos.linha >= linhas || pos.coluna < 0 || pos.coluna >= colunas)

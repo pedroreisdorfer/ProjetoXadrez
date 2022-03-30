@@ -12,15 +12,21 @@ namespace xadrez_Console
             
             try
             {
-                Tabuleiro tab = new Tabuleiro(8, 8);
+                PartidaDeXadrez partida = new PartidaDeXadrez();               
 
-                tab.colocarPeca(new Torre(tab, Cor.preta), new Posicao(0, 0));
-                tab.colocarPeca(new Torre(tab, Cor.preta), new Posicao(1, 3));
-                tab.colocarPeca(new Rei(tab, Cor.preta), new Posicao(0, 2));
+                while (!partida.terminada)
+                {
+                    Console.Clear();
+                    Tela.imprimirTabuleiro(partida.tab);
 
-                tab.colocarPeca(new Torre(tab, Cor.branca), new Posicao(3, 5));
+                    Console.WriteLine();
+                    Console.Write("Origem: ");
+                    Posicao origem = Tela.lerposicaoXadrez().toPosicao(); //le a posição e transforma ela em posição de matriz com toPosicao() //
+                    Console.Write("Destino: ");
+                    Posicao destino = Tela.lerposicaoXadrez().toPosicao();
 
-                Tela.imprimirTabuleiro(tab);              
+                    partida.executaMovimento(origem, destino);
+                }            
 
             }
             catch(TabuleiroException e)

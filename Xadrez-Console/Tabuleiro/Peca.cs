@@ -16,5 +16,10 @@
             this.cor = cor;        
             this.qteMovimentos = 0; // começa zero pois a peça inicialmente é parada //
         }
+
+        public void incrementarQteMovimentos() // operação simples que vai somando cada movimento //
+        {
+            qteMovimentos++;
+        }
     }
 }
