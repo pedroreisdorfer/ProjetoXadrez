@@ -54,7 +54,7 @@
         {
             if (!posicaoValida(pos)) // significa: se minha posição pos não for válida, ai lanço uma exceção //
             {
-                throw new TabuleiroException("Posição inválida");
+                throw new TabuleiroException("Posição inválida!");
             }
         }
     }
