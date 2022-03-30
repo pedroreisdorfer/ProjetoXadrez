@@ -19,5 +19,11 @@
         {
             return pecas[linha, coluna]; // retorna os atributos na posição linha e posição coluna //
         }
+
+        public void colocarPeca(Peca p, Posicao pos)
+        {
+            pecas[pos.linha, pos.coluna] = p; // a Peca p vai para a posição pos.linha, pos.coluna]
+            p.posicao = pos;    
+        }
     }
 }
