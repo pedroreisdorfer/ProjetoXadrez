@@ -22,6 +22,27 @@
             qteMovimentos++;
         }
 
+        public bool existeMovimentosPossiveis() // vê se na matriz de movimentosPossiveis(), existe algum movimento true. Teste se a peça não está bloqueada de movimentos
+        {
+            bool[,] Mat = movimentosPossiveis();
+            for (int i=0; i<tab.linhas; i++)
+            {
+                for(int j=0; j<tab.colunas; j++)
+                {
+                    if (Mat[i, j])
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false; // quer dizer que não tem nenhum movimento possível na matriz de movimentos possíveis //          
+        }
+
+        public bool podeMoverPara(Posicao pos)
+        {
+            return movimentosPossiveis()[pos.linha, pos.coluna];
+        }
+
         public abstract bool[,] movimentosPossiveis(); // matriz boleana, pq para onde a peça movimentar será True e False para as outras opções.
                                                        // O método precisa ser abstrato, pois ele vai ser chamado em cada classe de peça específica para que
                                                        // haja o movimento. A regra de movimentos é prevista para cada peça específica //
