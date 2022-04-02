@@ -21,7 +21,10 @@
         {
             qteMovimentos++;
         }
-
+        public void decrementarQteMovimentos() // retira unidade dessa quantidade //
+        {
+            qteMovimentos--;
+        }
         public bool existeMovimentosPossiveis() // vê se na matriz de movimentosPossiveis(), existe algum movimento true. Teste se a peça não está bloqueada de movimentos
         {
             bool[,] Mat = movimentosPossiveis();

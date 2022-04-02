@@ -15,6 +15,10 @@ namespace Xadrez_Console
             Console.WriteLine();
             Console.WriteLine("Turno: " + partida.turno); // a variável partida chama turno, que é atualizada a cada jogagada. Dentro ds class PartidaDeXadrez tem o método realizadaJogada, que troca de turno após todo o processo //
             Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
+            if (partida.xeque)
+            {
+                Console.WriteLine("XEQUE!");
+            }
         }
         
 
