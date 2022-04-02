@@ -18,14 +18,8 @@ namespace xadrez_Console
                 {
                     try
                     {
-
-
                         Console.Clear();
-                        Tela.imprimirTabuleiro(partida.tab);
-                        Console.WriteLine();
-                        Console.WriteLine("Turno: " + partida.turno);
-                        Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
-
+                        Tela.imprimirPartida(partida);
                         Console.WriteLine();
                         Console.Write("Origem: ");
                         Posicao origem = Tela.lerposicaoXadrez().toPosicao(); //le a posição e transforma ela em posição de matriz com toPosicao() //
@@ -41,7 +35,7 @@ namespace xadrez_Console
                         Posicao destino = Tela.lerposicaoXadrez().toPosicao();
                         partida.validarPosicaoDestino(origem, destino);
                         
-                        partida.realizaJogada(origem, destino);
+                        partida.realizaJogada(origem, destino); // após essa parte o turno é troca e ocorre mudan~ça de jogador
                     }
                     catch (Exception e)
                     {
