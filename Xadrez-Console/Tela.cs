@@ -14,10 +14,19 @@ namespace Xadrez_Console
             imprimirPecasCapturadas(partida); // imprime todo o método imprimir PecasCapturadas, que como é void, irá atualizar a cada jodada, retornando valor para o método mesmo //
             Console.WriteLine();
             Console.WriteLine("Turno: " + partida.turno); // a variável partida chama turno, que é atualizada a cada jogagada. Dentro ds class PartidaDeXadrez tem o método realizadaJogada, que troca de turno após todo o processo //
-            Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
-            if (partida.xeque)
+            if (!partida.terminada)
             {
-                Console.WriteLine("XEQUE!");
+                Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
+                if (partida.xeque)
+                {
+                    Console.WriteLine("XEQUE!");
+                }
+            }           
+            
+            else
+            {
+                Console.WriteLine("XEQUEMATE!");
+                Console.WriteLine("Vencedor: " + partida.jogadorAtual);
             }
         }
         

@@ -69,9 +69,17 @@ namespace Xadrez
             {
                 xeque = false;
             }
+
+            if (testeXequemate(adversaria(jogadorAtual))) // se realizei a jogada e meu adversário continua em xeque-mate... //
+            {
+                terminada = true;
+            }
+            else // se não estiver em xeque-mate vai mudar de jogador
+            {
+                turno++; // passa para o próximo turno //
+                mudaJogador(); // após troca de turno, muda o jogador que irá jogar //
+            }
             
-            turno++; // passa para o próximo turno //
-            mudaJogador(); // após troca de turno, muda o jogador que irá jogar //
         }
 
         //teste se a posição é válida. Se vc vai digitar na origem uma posição que tem peça //
@@ -180,7 +188,35 @@ namespace Xadrez
             return false;
         }
 
-
+        public bool testeXequemate(Cor cor) // xeque-mate de uma dada cor //
+        {
+            if (!estaEmXeque(cor)) // se não está em xeque, então não está em xequeMate //
+            {
+                return false;
+            }
+            foreach(Peca x in pecasEmJogo(cor)) // tentar encontrar alguma peça que, movendo, tira do xeque //
+            {
+                bool[,] mat = x.movimentosPossiveis();
+                for(int i=0; i<tab.linhas; i++)
+                {
+                    for(int j=0; j<tab.colunas; j++)
+                    {
+                        if (mat[i, j])
+                        {
+                            Posicao destino = new Posicao(i, j);
+                            Peca pecaCapturada = executaMovimento(x.posicao, destino);
+                            bool testeXeque = estaEmXeque(cor); //teste se está em xeque após movimento //
+                            desfazMovimento(x.posicao, destino, pecaCapturada);
+                            if (!testeXeque)
+                            {
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+            return true;
+        }
 
         public void colocarNovaPeca(char coluna, int linha, Peca peca) // dada uma coluna e linha e uma peça:  eu vou no tabuleiro da partida e coloco //
         {
