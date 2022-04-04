@@ -41,7 +41,7 @@
             return false; // quer dizer que não tem nenhum movimento possível na matriz de movimentos possíveis //          
         }
 
-        public bool podeMoverPara(Posicao pos)
+        public bool movimentoPossivel(Posicao pos)
         {
             return movimentosPossiveis()[pos.linha, pos.coluna];
         }
