@@ -35,7 +35,7 @@ namespace xadrez_Console
                         Posicao destino = Tela.lerposicaoXadrez().toPosicao();
                         partida.validarPosicaoDestino(origem, destino);
                         
-                        partida.realizaJogada(origem, destino); // após essa parte o turno é troca e ocorre mudan~ça de jogador
+                        partida.realizaJogada(origem, destino); // após essa parte o turno é troca e ocorre mudança de jogador
                     }
                     catch (Exception e)
                     {
