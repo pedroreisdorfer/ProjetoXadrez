@@ -1,4 +1,6 @@
-﻿namespace Tabuleiro_xadrez
+﻿using Xadrez;
+
+namespace Tabuleiro_xadrez
 {
     class Tabuleiro
     {
@@ -69,5 +71,8 @@
                 throw new TabuleiroException("Posição inválida!");
             }
         }
+
+        
+
     }
 }

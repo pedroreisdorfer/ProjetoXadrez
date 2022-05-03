@@ -45,7 +45,7 @@ namespace Xadrez
             }
 
 
-            pos.definirValores(posicao.linha - 1, posicao.coluna + 1);
+            pos.definirValores(posicao.linha - 1, posicao.coluna + 1); //para captura
             if (cor == Cor.branca)
             {
                 if (tab.posicaoValida(pos) && podeMover(pos))
@@ -57,7 +57,7 @@ namespace Xadrez
                 }
             }
 
-            pos.definirValores(posicao.linha - 1, posicao.coluna - 1);
+            pos.definirValores(posicao.linha - 1, posicao.coluna - 1); //para captura
             if (cor == Cor.branca)
             {
                 if (tab.posicaoValida(pos) && podeMover(pos))
@@ -87,7 +87,7 @@ namespace Xadrez
                 }
             }
 
-            pos.definirValores(posicao.linha + 1, posicao.coluna - 1);
+            pos.definirValores(posicao.linha + 1, posicao.coluna - 1); //para captura
             if (cor == Cor.preta)
             {
                 if (tab.posicaoValida(pos) && podeMover(pos))
@@ -99,7 +99,7 @@ namespace Xadrez
                 }
             }
 
-            pos.definirValores(posicao.linha + 1, posicao.coluna + 1);
+            pos.definirValores(posicao.linha + 1, posicao.coluna + 1); //para captura
             if (cor == Cor.preta)
             {
                 if (tab.posicaoValida(pos) && podeMover(pos))

@@ -37,6 +37,27 @@ namespace Xadrez
             {
                 capturadas.Add(pecaCapturada); // se eu capturar uma peça, ela vai para o conjunto de peças capturadas //
             }
+
+            // #jogada especial roque pequeno
+            if (p is Rei && destino.coluna == origem.coluna + 2) // se eu movi o rei duas casas, siginifica que fiz o Roque
+            { // então se estou fazendo o roque, preciso mover a torre também
+                Posicao origemT = new Posicao(origem.linha, origem.coluna + 3); // linha do rei e a coluna é a posição em que o rei estava + 3
+                Posicao destinoT = new Posicao(origem.linha, origem.coluna + 1); // pq a torre vai para a casa ao lado daqui o rei estava
+                Peca T = tab.retirarPeca(origemT); //então retiro a torre
+                T.incrementarQteMovimentos();
+                tab.colocarPeca(T, destinoT); //coloco então essa peça na posiçãod e destino que eu instanciei 
+            }
+
+            // #jogada especial roque grande
+            if (p is Rei && destino.coluna == origem.coluna - 2) // se eu movi o rei duas casas, siginifica que fiz o Roque
+            { // então se estou fazendo o roque, preciso mover a torre também
+                Posicao origemT = new Posicao(origem.linha, origem.coluna - 4); // linha do rei e a coluna é a posição em que o rei estava - 4
+                Posicao destinoT = new Posicao(origem.linha, origem.coluna - 1); // pq a torre vai para a casa ao lado daqui o rei estava
+                Peca T = tab.retirarPeca(origemT); //então retiro a torre
+                T.incrementarQteMovimentos();
+                tab.colocarPeca(T, destinoT); //coloco então essa peça na posiçãod e destino que eu instanciei 
+            }
+
             return pecaCapturada; // que está dentro da class Peca //
         }
 
@@ -50,7 +71,29 @@ namespace Xadrez
                 capturadas.Remove(pecaCapturada); // removo ela das capturadas, ou seja, descapturou //
             }
             tab.colocarPeca(p, origem); // coloco a peça novamente na sua posição de origem. Desfiz o movimento //
+
+            // #jogada especial roque pequeno (desfazendo o movimento da torre no roque)
+            if (p is Rei && destino.coluna == origem.coluna + 2) 
+            { 
+                Posicao origemT = new Posicao(origem.linha, origem.coluna + 3);
+                Posicao destinoT = new Posicao(destino.linha, destino.coluna + 1);  
+                Peca T = tab.retirarPeca(destinoT); 
+                T.decrementarQteMovimentos();
+                tab.colocarPeca(T, origemT);  
+            }
+
+            // #jogada especial roque grande (desfazendo o movimento da torre no roque)
+            if (p is Rei && destino.coluna == origem.coluna - 2)
+            {
+                Posicao origemT = new Posicao(origem.linha, origem.coluna - 4);
+                Posicao destinoT = new Posicao(destino.linha, destino.coluna - 1);
+                Peca T = tab.retirarPeca(destinoT);
+                T.decrementarQteMovimentos();
+                tab.colocarPeca(T, origemT);
+            }
+
         }
+
         public void realizaJogada(Posicao origem, Posicao destino) // para funcionalidade do turno
         {
             Peca pecaCapturada = executaMovimento(origem, destino); // pegando peça capturada da execução do movimento
@@ -235,8 +278,7 @@ namespace Xadrez
             colocarNovaPeca('f', 1, new Bispo(tab, Cor.branca));
             colocarNovaPeca('c', 1, new Bispo(tab, Cor.branca));
             colocarNovaPeca('d', 1, new Rainha(tab, Cor.branca));
-            colocarNovaPeca('e', 1, new Rei(tab, Cor.branca));
-
+            colocarNovaPeca('e', 1, new Rei(tab, Cor.branca, this)); // this para referenci para ela mesma. Pq? na class do rei => private PartidaDeXadrez partida;
             colocarNovaPeca('h', 2, new Peao(tab, Cor.branca));
             colocarNovaPeca('a', 2, new Peao(tab, Cor.branca));
             colocarNovaPeca('g', 2, new Peao(tab, Cor.branca));
@@ -253,8 +295,7 @@ namespace Xadrez
             colocarNovaPeca('f', 8, new Bispo(tab, Cor.preta));
             colocarNovaPeca('c', 8, new Bispo(tab, Cor.preta));
             colocarNovaPeca('d', 8, new Rainha(tab, Cor.preta));
-            colocarNovaPeca('e', 8, new Rei(tab, Cor.preta));
-
+            colocarNovaPeca('e', 8, new Rei(tab, Cor.preta, this));
             colocarNovaPeca('h', 7, new Peao(tab, Cor.preta));
             colocarNovaPeca('a', 7, new Peao(tab, Cor.preta));
             colocarNovaPeca('g', 7, new Peao(tab, Cor.preta));

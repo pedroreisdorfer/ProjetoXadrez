@@ -15,7 +15,7 @@ namespace Xadrez
             return "T";
         }
 
-        private bool podeMover(Posicao pos) // para verificar se o rei pode mover para uma determinada posição //
+        private bool podeMover(Posicao pos) // para verificar se a torre pode mover para uma determinada posição //
         {
             Peca p = tab.peca(pos); // pega peça que está na posição pos //
             return p == null || p.cor != cor; // pode mover ou quando a cada está livre OU quando é uma peça adversária
@@ -85,5 +85,9 @@ namespace Xadrez
 
             return mat;
         }
+
+
+
+
     }
 }
